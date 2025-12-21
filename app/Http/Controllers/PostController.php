@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Http\Resources\CommentResource;
 use Illuminate\Http\Request;
+use App\Http\Resources\PostResource;
+
+
+
 
 class PostController extends Controller
 {
@@ -11,9 +16,14 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-    }
+{
+
+    //ray()->showQueries();
+
+    return inertia('Posts/Index', [
+        'posts' => Post::paginate(),
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.

@@ -1,0 +1,60 @@
+[21-Dec-2025 01:14:45 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:15:57 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:16:21 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:16:27 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:18:05 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:18:16 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:18:23 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:18:29 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:20:34 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:21:44 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:22:53 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:23:32 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:23:47 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:24:36 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:24:50 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:26:23 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:35:27 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:35:34 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:42:46 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:43:30 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:44:43 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:47:06 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:48:41 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:49:08 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:50:07 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 01:50:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function str_contains() in /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest:39
+Stack trace:
+#0 /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest(191): {closure}()
+#1 /home/laravelsandbox/laravel-forum/vendor/bin/pest(115): include('/home/laravelsa...')
+#2 {main}
+  thrown in /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest on line 39
+[21-Dec-2025 01:51:41 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 11:57:31 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 11:57:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function str_contains() in /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest:39
+Stack trace:
+#0 /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest(191): {closure}()
+#1 /home/laravelsandbox/laravel-forum/vendor/bin/pest(115): include('/home/laravelsa...')
+#2 {main}
+  thrown in /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest on line 39
+[21-Dec-2025 12:02:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function str_contains() in /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest:39
+Stack trace:
+#0 /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest(191): {closure}()
+#1 /home/laravelsandbox/laravel-forum/vendor/bin/pest(115): include('/home/laravelsa...')
+#2 {main}
+  thrown in /home/laravelsandbox/laravel-forum/vendor/pestphp/pest/bin/pest on line 39
+[21-Dec-2025 12:03:10 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:04:32 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:22:18 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:24:07 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:25:12 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:28:11 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:35:23 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:36:15 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:36:51 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:40:42 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:42:18 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 12:43:49 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 13:02:26 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 13:23:14 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
+[21-Dec-2025 15:55:18 UTC] PHP Fatal error:  Trait "Tests\CreatesApplication" not found in /home/laravelsandbox/laravel-forum/tests/TestCase.php on line 7
