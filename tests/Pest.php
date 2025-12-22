@@ -1,52 +1,46 @@
 <?php
 
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Testing\TestResponse;
+use Illuminate\Http\Request;
 
-//uses()->compact(false);
-uses(TestCase::class, LazilyRefreshDatabase::class)->in('Feature');
-/*
-|--------------------------------------------------------------------------
-| Test Case
-|--------------------------------------------------------------------------
-|
-| The closure you provide to your test functions is always bound to a specific PHPUnit test
-| case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
-| need to change it using the "pest()" function to bind a different classes or traits.
-|
-*/
+use Inertia\Testing\AssertableInertia as Assert;
 
-pest()->extend(Tests\TestCase::class)
-    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+pest()
+    ->extend(TestCase::class)
+    ->use(RefreshDatabase::class)
     ->in('Feature');
 
-/*
-|--------------------------------------------------------------------------
-| Expectations
-|--------------------------------------------------------------------------
-|
-| When you're writing tests, you often need to check that values meet certain conditions. The
-| "expect()" function gives you access to a set of "expectations" methods that you can use
-| to assert different things. Of course, you may extend the Expectation API at any time.
-|
-*/
+pest()
+    ->extend(TestCase::class)
+    ->in('Unit');
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
+// Custom Inertia assertion macros
+TestResponse::macro('assertComponent', function (string $component) {
+    return $this->assertInertia(fn (Assert $page) => $page->component($component));
 });
 
-/*
-|--------------------------------------------------------------------------
-| Functions
-|--------------------------------------------------------------------------
-|
-| While Pest is very powerful out-of-the-box, you may have some testing code specific to your
-| project that you don't want to repeat in every file. Here you can also expose helpers as
-| global functions to help you to reduce the number of lines of code in your test files.
-|
-*/
+TestResponse::macro('assertHasPaginatedResource', function (string $key, $resource) {
+    return $this->assertInertia(function (Assert $page) use ($key, $resource) {
+        $page->has($key . '.data')
+             ->has($key . '.links');
+        
+        // Compare the data arrays
+        $expected = $resource->toArray(request());
+        $actual = $page->toArray()['props'][$key]['data'];
+        
+        expect($actual)->toEqual($expected);
+    });
 
-function something()
-{
-    // ..
-}
+    TestResponse::macro('assertHasResource', function (string $key, $resource) {
+    return $this->assertInertia(function (Assert $page) use ($key, $resource) {
+        $page->has($key);
+        
+        $expected = $resource->toArray(request());
+        $actual = $page->toArray()['props'][$key];
+        
+        expect($actual)->toEqual($expected);
+    });
+});
+});

@@ -1,0 +1,3 @@
+[root@vps105032 laravel-forum]# git add .
+[root@vps105032 laravel-forum]# git commit -m "Database Migration & pagination"
+[root@vps105032 laravel-forum]# git push origin main
