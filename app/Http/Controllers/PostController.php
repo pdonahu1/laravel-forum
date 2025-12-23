@@ -16,11 +16,10 @@ class PostController extends Controller
      */
     public function index()
 {
-
     return inertia('Posts/Index', [
-    // added 'post' for testing purposes
-        // 'post' => PostResource::collection(Post::paginate()),
-        'posts' => Post::paginate(),
+        'posts' => Post::with('user')  // ← Load user relationship!
+            ->latest()
+            ->paginate(10),
     ]);
 }
 
