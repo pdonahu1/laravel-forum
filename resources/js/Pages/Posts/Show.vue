@@ -23,7 +23,7 @@
 
                 <ul class="divide-y mt-4">
                     <li v-for="comment in comments.data" :key="comment.id" class="px-2 py-4">
-                        <Comment :comment="comment"/>
+                        <Comment @edit="editComment" @delete="deleteComment" :comment="comment"/>
                     </li>
                 </ul>
 
@@ -46,6 +46,8 @@ import {useForm, router} from "@inertiajs/vue3";
 import TextArea from "@/Components/TextArea.vue";
 import InputError from "@/Components/InputError.vue";
 import { formatDistance, parseISO } from "date-fns";
+import { ref } from "vue";
+//import { comment } from "postcss";
 
 const props = defineProps(['post', 'comments']);
 const formattedData = computed(() => formatDistance(parseISO(props.post.created_at), new Date()));
@@ -54,14 +56,24 @@ const commentForm = useForm({
     body: '',
 })
 
+const commentIdBeingEdited = ref(null);
+const commentBeingEdited = computed(() => props.comments.data.find(comment => comment.id === commentIdBeingEdited.value));
+
+const editComment = (commentId) => {
+    commentIdBeingEdited.value = commentId;
+    commentForm.body = commentBeingEdited.value?.body;
+};
+
 const addComment = () => commentForm.post(route('posts.comments.store', props.post.id), {
     preserveScroll: true,
     preserveState: (page) => Object.keys(page.props.errors).length > 0,
     onSuccess: () => {
-        console.log('Comment added successfully!');
         commentForm.reset();
         // Force reload just the comments
         router.reload({ only: ['comments'] });
     },
+});
+const deleteComment = (commentId) => router.delete(route('comments.destroy', { comment: commentId, page: props.comments.current_page }), {
+    preserveScroll: true,
 });
 </script>

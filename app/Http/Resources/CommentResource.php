@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 
+
 class CommentResource extends JsonResource
 {
     /**
@@ -26,6 +27,10 @@ class CommentResource extends JsonResource
             'body' => $this->body,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
+            'can' => [
+                'update' => $request->user()?->can('update', $this->resource),
+                'delete' => $request->user()?->can('delete', $this->resource),
+        ],
         ];
     }
 }

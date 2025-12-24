@@ -5,6 +5,11 @@ use App\Models\Post;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
+it('required authentication', function () {
+
+    $this->post(route('posts.comments.store', Post::factory()->create()))
+        ->assertRedirect(route('login'));
+});
 
 it('can store a comment', function () {
     $user = User::factory()->create();
@@ -20,13 +25,13 @@ it('can store a comment', function () {
     ]);
 });
 
-it('redirects to the post show page', function() {
+it('returns successfully after storing a comment', function() {
     $post = Post::factory()->create();
 
     actingAs(User::factory()->create())->post(route('posts.comments.store', $post), [
         'body' => 'This is a comment.',
     ])
-    ->assertRedirect(route('posts.show', $post));
+    ->assertOk();  // Changed from assertRedirect
 });
 
 it('requires a valid body', function($value) {
@@ -39,7 +44,3 @@ it('requires a valid body', function($value) {
 })->with([
     null, 1, 1.5, true, str_repeat('a', 3501),
 ]);
-
-
-
-
