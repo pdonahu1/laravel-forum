@@ -44,24 +44,14 @@ class PostController extends Controller
      */
     public function show(Post $post)
 {
-    $post->load('user');
-    
     return inertia('Posts/Show', [
-        'post' => PostResource::make($post),
-        'comments' => $post->comments()
+        'post' => fn () => PostResource::make($post->load('user')),
+        'comments' => fn () => $post->comments()
             ->with('user')
             ->latest()
             ->latest('id')
             ->paginate(10)
-            ->through(fn($comment) => [
-                'id' => $comment->id,
-                'body' => $comment->body,
-                'user' => [
-                    'id' => $comment->user->id,
-                    'name' => $comment->user->name,
-                ],
-                'created_at' => $comment->created_at->diffForHumans(),
-            ]),
+            ->through(fn($comment) => CommentResource::make($comment)),
     ]);
 }
 

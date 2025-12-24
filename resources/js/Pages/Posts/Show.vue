@@ -42,7 +42,7 @@ import {relativeDate} from '@/Utilities/date.js';
 import Comment from "@/Components/Comment.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import {useForm} from "@inertiajs/vue3";
+import {useForm, router} from "@inertiajs/vue3";
 import TextArea from "@/Components/TextArea.vue";
 import InputError from "@/Components/InputError.vue";
 import { formatDistance, parseISO } from "date-fns";
@@ -54,8 +54,14 @@ const commentForm = useForm({
     body: '',
 })
 
-const addComment = ()  => commentForm.post(route('posts.comments.store', props.post.id), {
+const addComment = () => commentForm.post(route('posts.comments.store', props.post.id), {
     preserveScroll: true,
-    onSuccess: () => commentForm.reset(),
+    preserveState: (page) => Object.keys(page.props.errors).length > 0,
+    onSuccess: () => {
+        console.log('Comment added successfully!');
+        commentForm.reset();
+        // Force reload just the comments
+        router.reload({ only: ['comments'] });
+    },
 });
 </script>
