@@ -32,21 +32,22 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request, Post $post)
-    {
-        Comment::make($request->validate(['body' => ['required', 'string', 'max:3500']]))
-            ->user()->associate($request->user())
-            ->post()->associate($post)
-            ->save();
+{
+    Comment::make($request->validate(['body' => ['required', 'string', 'max:3500']]))
+        ->user()->associate($request->user())
+        ->post()->associate($post)
+        ->save();
 
-        // return back();
-    }
+    return to_route('posts.show', $post)
+        ->banner('Comment added.');
+}
 
     /**
      * Display the specified resource.
      */
     public function show(Comment $comment)
     {
-        //
+        
     }
 
     /**
@@ -67,7 +68,8 @@ class CommentController extends Controller
 
         $comment->update($data);
 
-        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')]);
+        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')])
+            ->banner('Comment updated.');
     }
 
     /**
@@ -79,6 +81,7 @@ class CommentController extends Controller
 
         $comment->delete();
 
-        return to_route('posts.show',['post' => $comment->post_id, 'page' => $request->query('page')]);
+        return to_route('posts.show',['post' => $comment->post_id, 'page' => $request->query('page')])
+            ->banner('Comment deleted.');
     }
 }
