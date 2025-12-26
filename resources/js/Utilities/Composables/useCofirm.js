@@ -1,5 +1,4 @@
-import { reactive } from 'vue';
-import { readonly } from 'vue';
+import { readonly, reactive } from 'vue';
 
 
 const globalState = reactive({
@@ -22,7 +21,7 @@ export function useConfirm() {
     return {
         state: readonly(globalState),
         confirmation: (message, title = 'Please Confirm') => {
-        
+
             globalState.title = title;
             globalState.message = message;
             globalState.show = true;
@@ -38,7 +37,7 @@ export function useConfirm() {
             }
             resetModal();
         },
-        
+
         cancel: () => {
             if (globalState.resolver) {
                 globalState.resolver(false);

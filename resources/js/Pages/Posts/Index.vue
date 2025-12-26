@@ -28,7 +28,7 @@ import { onMounted } from 'vue';
 const props = defineProps(['posts']);  // ← Capture props!
 const formattedData = (post) => formatDistance(parseISO(post.created_at), new Date());
 
-onMounted(() => {
-    console.log('Posts prop:', props.posts);
-});
+//onMounted(() => {
+//    console.log('Posts prop:', props.posts);
+// });
 </script>
