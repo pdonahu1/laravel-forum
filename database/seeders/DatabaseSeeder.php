@@ -23,8 +23,11 @@ class DatabaseSeeder extends Seeder
 // Create 200 posts associated with the users
 // Recycle prevents any additional posts from being created
 
-        $posts = Post::factory(200)->recycle($users)
+        $posts = Post::factory(200)
+            ->withFixture()
+            ->recycle($users)
             ->create();
+            
             
 // Create 100 comments associated with the users and posts
 // Recycle prevents any additional posts from being created
@@ -33,11 +36,11 @@ class DatabaseSeeder extends Seeder
             ->create();
         
         $patrick = User::factory()
-            ->has(Post::factory(45))
+            ->has(Post::factory(45)->withFixture())
             ->has(Comment::factory(120)->recycle($posts))
-        ->create([
-            'name' => 'Patrick Donahue',
-            'email' => 'pdonahu1@bs5projects.com',
+            ->create([
+                'name' => 'Patrick Donahue',
+                'email' => 'pdonahu1@bs5projects.com',
         ]);
     }
 }

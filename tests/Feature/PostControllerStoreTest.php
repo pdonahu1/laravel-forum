@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
+
 beforeEach(function () {
     $this->validData = [
         'title' => 'This is a Test Post',
@@ -32,7 +33,7 @@ it('redirects to the correct route show page', function () {
     $user = User::factory()->create();
     actingAs($user)
         ->post(route('posts.store'), $this->validData)
-        ->assertRedirect(route('posts.show', Post::latest('id')->first())); 
+        ->assertRedirect(Post::latest('id')->first()->showRoute()); 
 });
 
 

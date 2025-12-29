@@ -12,7 +12,21 @@
 
                 <div class="mt-3">
                     <InputLabel for="body" class="sr-only">Body</InputLabel>
-                    <TextArea id="body" type="text" v-model="form.body" rows="15" />
+                    <MarkdownEditor v-model="form.body">
+
+                        <template #toolbar="{ editor }">
+                            <li>
+                        <button @click="autofill"
+                        type="button" 
+                        class="px-3 py-2"
+                        title="Autofill">
+                        <i class="ri-article-line">
+                        </i>
+                    </button>
+                </li>
+                        </template>
+
+                    </MarkdownEditor> 
                     <InputError :message="form.errors.body" class="mt-1" />
                 </div>
 
@@ -29,6 +43,7 @@ import { ref, computed } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import MarkdownEditor from '@/Components/MarkdownEditor.vue';
 import Container from '@/Components/Container.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextArea from '@/Components/TextArea.vue';
@@ -36,7 +51,8 @@ import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import { useConfirm } from '/resources/js/Utilities/Composables/useCofirm.js';
 import { formatDistance, parseISO } from 'date-fns';
-
+import axios from 'axios';
+// import { isInProduction } from '@/Utilities/environment.js';
 
 
 const form = useForm({
@@ -108,8 +124,6 @@ const updateComment = async () => {
     });
 };
 
-
-
 const deleteComment = async (commentId) => {
     if (! await confirmation('Are you sure you want to delete this comment?')) {
     return;
@@ -119,4 +133,16 @@ const deleteComment = async (commentId) => {
         preserveScroll: true,
     });
 };
+
+// const isInProduction = () => import.meta.env.PROD;
+
+
+const autofill = async () => {
+   //if (isInProduction()) {
+   //    return;
+ //}
+    const response = await axios.get('/local/post-content');
+    form.title = response.data.title;
+    form.body = response.data.body;
+}
 </script>

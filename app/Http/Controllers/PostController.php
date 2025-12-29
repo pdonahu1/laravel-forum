@@ -7,6 +7,8 @@ use App\Http\Resources\CommentResource;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
 use App\Models\Comment;
+use Illuminate\Support\Str;
+
 // use Inertia\Inertia;
 // use Illuminate\Http\Auth\Middleware;
 
@@ -25,9 +27,10 @@ class PostController extends Controller
     public function index()
 {
     return inertia('Posts/Index', [
-        'posts' => Post::with('user')  // ← Load user relationship!
+        'posts' => Post::with('user')
             ->latest()
-            ->paginate(10),
+            ->paginate(10)
+            ->through(fn($post) => PostResource::make($post)),
     ]);
 }
 
@@ -54,14 +57,18 @@ class PostController extends Controller
         'user_id' => $request->user()->id,
     ]);
 
-    return to_route('posts.show', $post);
+    return redirect($post->showRoute());
 }
 
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Request $request, Post $post)
 {
+    if (!Str::contains($post->showRoute(), $request->path())) {
+        return redirect($post->showRoute($request->query()), status: 301);
+    }
+
     return inertia('Posts/Show', [
         'post' => fn () => PostResource::make($post->load('user')),
         'comments' => fn () => $post->comments()

@@ -34,7 +34,7 @@ it('redirects to the post show page', function () {
 
     ->delete(route('comments.destroy', $comment))
 
-    ->assertRedirect(route('posts.show', $comment->post_id));
+    ->assertRedirect($comment->post->showRoute());
 });
 
 it('prevents you from deleting a comment you dont own', function () {
@@ -73,6 +73,6 @@ it('prevents deleting a comment posted over an hour ago', function () {
 
     ->delete(route('comments.destroy', ['comment' => $comment, 'page' => 2]))
 
-    ->assertRedirect(route('posts.show', ['post' => $comment->post_id, 'page' => 2]));
+    ->assertRedirect($comment->post->showRoute(['page' => 2]));
 });
 

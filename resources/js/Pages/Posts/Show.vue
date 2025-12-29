@@ -4,8 +4,7 @@
             <h1 class="text-2xl font-bold">{{ post.title }}</h1>
             <span class="text-small text-gray-600 mt-1"> {{ formattedData }} ago by {{ post.user.name }}</span>
 
-            <article class="mt-6">
-                <pre class="whitespace-pre-wrap font-sans">{{ post.body }}</pre>
+            <article class="mt-6 prose prose-sm max-w-none" v-html="post.html">  
             </article>
 
             <div>
@@ -14,7 +13,7 @@
                 <form v-if="$page.props.auth.user" @submit.prevent="() => commentIdBeingEdited ? updateComment() : addComment()" class="mt-4">
                     <div>
                         <InputLabel for="body" class="sr-only">Comment</InputLabel>
-                        <TextArea ref="commentTextAreaRef" rows="4" id="body" v-model="commentForm.body" placeholder="Speak your mind Spock"/>
+                        <MarkdownEditor ref="commentTextAreaRef" id="body" v-model="commentForm.body" placeholder="Speak your mind Spock" editorClass="min-h-[160px]"/>
                         <InputError :message="commentForm.errors.body" class="mt-1"/>
                     </div>
 
@@ -45,11 +44,12 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import {useForm, router} from "@inertiajs/vue3";
-import TextArea from "@/Components/TextArea.vue";
 import InputError from "@/Components/InputError.vue";
 import { formatDistance, parseISO } from "date-fns";
 import { useConfirm } from "/resources/js/Utilities/Composables/useCofirm.js";
 import { ref } from "vue";
+import MarkdownEditor from "@/Components/MarkdownEditor.vue";
+
 
 //import { comment } from "postcss";
 

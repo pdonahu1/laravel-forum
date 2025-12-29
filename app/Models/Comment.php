@@ -12,6 +12,9 @@ class Comment extends Model
 {
     /** @use HasFactory<\Database\Factories\CommentFactory> */
     use HasFactory;
+    use \App\Models\Concerns\ConvertMarkdownToHtml;
+
+    protected $fillable = ['user_id', 'post_id', 'body', 'html'];
 
     
     public function user(): BelongsTo

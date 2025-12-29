@@ -4,6 +4,12 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\UserResource;
+use Illuminate\Support\Str;
+use App\Models\Post;
+use App\Http\Resources\CommentResource;
+use App\Models\User;
+use function route;
 
 class PostResource extends JsonResource
 {
@@ -19,8 +25,12 @@ class PostResource extends JsonResource
             'user' => $this->whenLoaded('user', fn () => UserResource::make($this->user)),
             'title' => $this->title,
             'body' => $this->body,
+            'html' => $this->html,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
+            'routes' => [
+                'show' => $this->showRoute(),
+            ],
         ];
     }
 }

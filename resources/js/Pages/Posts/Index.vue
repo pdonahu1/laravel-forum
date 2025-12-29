@@ -3,7 +3,7 @@
     <Container>
         <ul class="divide-y">
             <li v-for="post in posts.data" :key="post.id" class="py-4 px-2">
-                <Link :href="route('posts.show', post.id)" class="group">
+                <Link :href="post.routes.show" class="group">
                 <span class="font-bold text-lg group-hover:text-indigo-500">{{ post.title }}</span>
                 <span class="block pt-1 text-sm text-gray-600"> {{ formattedData(post) }} ago by {{ post.user.name }}</span>
             </Link>
@@ -22,6 +22,7 @@ import { Link } from '@inertiajs/vue3';
 import { formatDistance, parseISO } from "date-fns";
 import { relativeDate } from "@/Utilities/date.js";
 import { onMounted } from 'vue';
+
 //import { route } from 'vendor/tightenco/ziggy/src/js';
 
 

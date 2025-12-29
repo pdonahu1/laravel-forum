@@ -15,6 +15,9 @@ class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
+    use \App\Models\Concerns\ConvertMarkdownToHtml;
+
+    protected $fillable = ['user_id', 'title', 'body', 'html'];
 
     public function user()
     {
@@ -29,6 +32,11 @@ class Post extends Model
     public function title(): Attribute
     {
     return Attribute::set(fn ($value) => Str::title($value));
+    }
+
+    public function showRoute(array $parameters = []) {
+
+        return route('posts.show', [$this, Str::slug($this->title), ...$parameters]);
     }
 }
 
