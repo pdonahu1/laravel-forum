@@ -1,4 +1,4 @@
-# *Fight Club* (1999) — Identity, Rage, and the Violence of Self-Awareness
+# Fight Club (1999) — Identity, Rage, and the Violence of Self-Awareness
 
 David Fincher’s *Fight Club* remains one of the most confrontational films of the late 20th century—not because of its violence, but because of what that violence represents. It’s a movie that doesn’t want passive viewers. It wants arguments, misreadings, hot takes, and second thoughts. And more than two decades later, it’s still getting them.
 

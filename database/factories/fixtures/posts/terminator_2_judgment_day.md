@@ -1,4 +1,4 @@
-# *Terminator 2: Judgment Day* (1991) — Fate, Free Will, and the Machine That Learned to Care
+# Terminator 2: Judgment Day (1991) — Fate, Free Will, and the Machine That Learned to Care
 
 James Cameron’s *Terminator 2: Judgment Day* is one of those rare sequels that doesn’t just escalate—it evolves. Bigger action and groundbreaking effects are only part of the story. What gives the film its lasting power is its philosophical pivot: a relentless action movie that pauses to ask whether destiny is fixed, and whether even a machine can choose to be better.
 

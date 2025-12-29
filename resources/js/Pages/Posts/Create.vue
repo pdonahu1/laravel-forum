@@ -1,14 +1,33 @@
 <template>
     <AppLayout title="Create a Post">
         <Container>
-            <h1 class="text-2xl font-bold">Create a Post</h1>
+            <PageHeading>Create a Post</PageHeading>
 
             <form @submit.prevent="createPost" class="mt-6">
                 <div>
                     <InputLabel for="title" class="sr-only">Title</InputLabel>
-                    <TextInput id="title" type="text" class="mt-1 block w-full" v-model="form.title" placeholder="Give it a great title..." />
+                    <TextInput 
+                    id="title" 
+                    type="text" 
+                    class="mt-1 block w-full" 
+                    v-model="form.title" 
+                    placeholder="Give it a great title..." />
                     <InputError :message="form.errors.title" class="mt-1"/>
                 </div>
+
+
+                <div class="mt-3">
+                    <inputLabel for="topic_id">Select a Topic</inputLabel>
+
+                    <select v-model="form.topic_id" id="topic_id" class="w-full mt-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+
+                        <option v-for="topic in topics" :key="topic.id" :value="topic.id">
+                            {{ topic.name }}
+                        </option>
+                    </select>
+                    <InputError :message="form.errors.topic_id" class="mt-1"/>
+                </div>
+                
 
                 <div class="mt-3">
                     <InputLabel for="body" class="sr-only">Body</InputLabel>
@@ -52,11 +71,15 @@ import InputError from '@/Components/InputError.vue';
 import { useConfirm } from '/resources/js/Utilities/Composables/useCofirm.js';
 import { formatDistance, parseISO } from 'date-fns';
 import axios from 'axios';
+import PageHeading from '@/Components/PageHeading.vue';
+
 // import { isInProduction } from '@/Utilities/environment.js';
 
+const props = defineProps(['topics']);
 
 const form = useForm({
     title: '',
+    topic_id: props.topics[0].id,
     body: '',
 })
 
@@ -69,7 +92,6 @@ const createPost = () => {
 
 //import { comment } from "postcss";
 
-const props = defineProps(['post', 'comments']);
 const formattedData = computed(() => formatDistance(parseISO(props.post.created_at), new Date()));
 
 const commentForm = useForm({

@@ -4,8 +4,6 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\TestResponse;
 use Illuminate\Http\Request;
-
-
 use Inertia\Testing\AssertableInertia as Assert;
 
 pest()
@@ -27,21 +25,22 @@ TestResponse::macro('assertHasPaginatedResource', function (string $key, $resour
         $page->has($key . '.data')
              ->has($key . '.links');
         
-        // Compare the data arrays
-        $expected = $resource->toArray(request());
+        // Fully serialize the expected resource to match the actual response
+        $expected = json_decode(json_encode($resource), true);
         $actual = $page->toArray()['props'][$key]['data'];
         
         expect($actual)->toEqual($expected);
     });
+});  // ← Properly closed
 
-    TestResponse::macro('assertHasResource', function (string $key, $resource) {
+TestResponse::macro('assertHasResource', function (string $key, $resource) {
     return $this->assertInertia(function (Assert $page) use ($key, $resource) {
         $page->has($key);
         
-        $expected = $resource->toArray(request());
+        // Fully serialize the expected resource to match the actual response
+        $expected = json_decode(json_encode($resource), true);
         $actual = $page->toArray()['props'][$key];
         
         expect($actual)->toEqual($expected);
     });
-});
 });

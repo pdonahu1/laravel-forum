@@ -1,4 +1,4 @@
-# *The Shawshank Redemption* (1994) — Hope as an Act of Defiance
+# The Shawshank Redemption (1994) — Hope as an Act of Defiance
 
 Frank Darabont’s *The Shawshank Redemption* has grown from a modest box-office performer into one of the most enduringly beloved films in modern cinema. Its reputation wasn’t built on spectacle or shock, but on something far rarer: patience. This is a film that trusts time—within its story, and with its audience.
 

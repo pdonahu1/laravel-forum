@@ -1,4 +1,4 @@
-# *Braveheart* (1995) — Myth, Martyrdom, and the Price of Defiance
+# Braveheart (1995) — Myth, Martyrdom, and the Price of Defiance
 
 Mel Gibson’s *Braveheart* is less a historical record than a cinematic legend—one that trades strict accuracy for emotional force. It’s a film that understands how stories become symbols, and how symbols can outlive facts. That tension between mythmaking and meaning is precisely why *Braveheart* continues to ignite debate decades after its release.
 

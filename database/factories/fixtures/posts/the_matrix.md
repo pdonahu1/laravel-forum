@@ -1,4 +1,4 @@
-# *The Matrix* (1999) — Choice, Control, and the Illusion of Freedom
+# The Matrix (1999) — Choice, Control, and the Illusion of Freedom
 
 Few films arrive as both a cultural event and a philosophical provocation. *The Matrix*, directed by the Wachowskis, didn’t just redefine sci-fi action—it challenged audiences to interrogate reality itself. Decades later, it remains a lightning rod for discussion, theory, and reinterpretation, especially as technology continues to blur the line between agency and automation.
 

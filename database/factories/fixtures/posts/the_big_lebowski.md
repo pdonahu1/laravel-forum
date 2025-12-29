@@ -1,4 +1,4 @@
-# *The Big Lebowski* (1998) — Chaos, Comfort, and the Philosophy of Letting It Be
+# The Big Lebowski (1998) — Chaos, Comfort, and the Philosophy of Letting It Be
 
 Joel and Ethan Coen’s *The Big Lebowski* is a noir that refuses to behave like one. What begins as a case of mistaken identity drifts into an odyssey of detours, dead ends, and conversations that matter far more than outcomes. Over time, the film has evolved from cult curiosity to communal text—quoted, debated, and endlessly reinterpreted.
 

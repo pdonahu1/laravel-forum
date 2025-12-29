@@ -1,4 +1,4 @@
-# *The Silence of the Lambs* (1991) — Power, Perception, and the Horror of Being Seen
+# The Silence of the Lambs (1991) — Power, Perception, and the Horror of Being Seen
 
 Jonathan Demme’s *The Silence of the Lambs* occupies a rare space in cinema: a psychological thriller that’s as unsettling in conversation as it is in violence. It doesn’t rely on spectacle so much as proximity—forcing viewers into intimate, often uncomfortable exchanges where control shifts with a glance or a pause.
 

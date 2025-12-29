@@ -1,4 +1,4 @@
-# *Reservoir Dogs* (1992) — Trust, Performance, and the Violence of Uncertainty
+# Reservoir Dogs (1992) — Trust, Performance, and the Violence of Uncertainty
 
 Quentin Tarantino’s *Reservoir Dogs* is a crime film that famously refuses to show the crime. Instead, it fixates on aftermath—on paranoia, storytelling, and the fragile agreements that hold criminal worlds together. It’s a debut that announces its intentions immediately: this isn’t about what happened, but about how people *explain* what happened when everything is already falling apart.
 

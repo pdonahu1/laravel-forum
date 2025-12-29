@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Topic;
+use App\Models\Post;
+use App\Support\PostFixtures;
 
 class AppServiceProvider extends ServiceProvider
 {

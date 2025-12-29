@@ -1,7 +1,10 @@
 <template>
     <AppLayout :title="post.title">
         <Container>
-            <h1 class="text-2xl font-bold">{{ post.title }}</h1>
+            <Pill :href="route('posts.index', {topic: post.topic.slug})">{{ post.topic.name }}</Pill>
+
+            <PageHeading class="mt-2">{{ post.title }}</PageHeading>
+
             <span class="text-small text-gray-600 mt-1"> {{ formattedData }} ago by {{ post.user.name }}</span>
 
             <article class="mt-6 prose prose-sm max-w-none" v-html="post.html">  
@@ -49,6 +52,10 @@ import { formatDistance, parseISO } from "date-fns";
 import { useConfirm } from "/resources/js/Utilities/Composables/useCofirm.js";
 import { ref } from "vue";
 import MarkdownEditor from "@/Components/MarkdownEditor.vue";
+import PageHeading from '@/Components/PageHeading.vue';
+import Pill from '@/Components/Pill.vue';
+
+
 
 
 //import { comment } from "postcss";

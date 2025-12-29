@@ -111,7 +111,7 @@
 <script setup>
 import { EditorContent, useEditor } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
-import { watch } from 'vue';
+import { onMounted, watch } from 'vue';
 import { defineProps, defineEmits } from 'vue';
 import { Markdown } from 'tiptap-markdown';
 import 'remixicon/fonts/remixicon.css';
@@ -119,17 +119,17 @@ import Placeholder from '@tiptap/extension-placeholder';
 
 
 const props = defineProps({
-    modelValue: '',
+    
     editorClass: '',
     placeholder: null,
 
 });
 
+const model = defineModel();
+
 defineExpose({
     focus: () => editor.value?.commands.focus(),
 });
-
-const emit = defineEmits(['update:modelValue']);
 
 const editor = useEditor({
     extensions: [
@@ -154,10 +154,14 @@ editorProps: {
       },
     },
 
-    onUpdate: () => emit('update:modelValue', editor.value?.storage.markdown.getMarkdown()),
+    onUpdate: () => model.value =  editor.value?.storage.markdown.getMarkdown(),
 });
 
-watch(() => props.modelValue, (value) => {
+onMounted(() => {
+
+watch(
+    model,
+     (value) => {
 
     if (value === editor.value?.storage.markdown.getMarkdown()) {
         return;
@@ -165,7 +169,9 @@ watch(() => props.modelValue, (value) => {
 
     editor.value?.commands.setContent(value);
 },
-    { immediate: true });
+    { immediate: true },
+);
+});
 
 const promptUserForHref = () => {
 

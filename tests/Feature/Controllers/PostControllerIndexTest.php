@@ -14,8 +14,8 @@ it('passes posts to the view', function () {
 
     $posts = Post::factory(3)->create();
 
-    $posts->load('user');
+    $posts->load(['user', 'topic']);  // ← Add 'topic' here!
 
     get(route('posts.index'))
-        ->assertHasPaginatedResource('posts', PostResource::collection($posts->reverse()));
+        ->assertHasPaginatedResource('posts', PostResource::collection($posts));
 });

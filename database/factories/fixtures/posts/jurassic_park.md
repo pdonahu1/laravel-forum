@@ -1,4 +1,4 @@
-# *Jurassic Park* (1993) — Spectacle, Science, and the Arrogance of Control
+# Jurassic Park (1993) — Spectacle, Science, and the Arrogance of Control
 
 Steven Spielberg’s *Jurassic Park* remains a masterclass in how wonder and terror can coexist within the same frame. On the surface, it’s a dinosaur adventure that revolutionized visual effects. Underneath, it’s a cautionary tale about hubris—about what happens when innovation outruns responsibility.
 

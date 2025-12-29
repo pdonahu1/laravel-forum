@@ -1,4 +1,4 @@
-# *Forrest Gump* (1994) — Simplicity, Chance, and the Stories We Tell Ourselves
+# Forrest Gump (1994) — Simplicity, Chance, and the Stories We Tell Ourselves
 
 Robert Zemeckis’ *Forrest Gump* is often remembered as a sentimental crowd-pleaser, but its staying power comes from something more complicated. Beneath the gentle humor and iconic moments lies a film deeply invested in questions of agency, luck, and how history treats those who don’t fit its preferred narrative.
 

@@ -1,4 +1,4 @@
-# *Pulp Fiction* (1994) — Chaos, Cool, and the Art of Talking in Circles
+# Pulp Fiction (1994) — Chaos, Cool, and the Art of Talking in Circles
 
 Quentin Tarantino’s *Pulp Fiction* didn’t just redefine independent cinema in the ’90s—it permanently altered how mainstream audiences thought about narrative, dialogue, and cinematic “cool.” More than three decades later, it remains a film people don’t simply *watch*; they argue about it, quote it, dissect it, and inevitably rank it somewhere in their personal canon.
 

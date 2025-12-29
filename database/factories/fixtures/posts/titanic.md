@@ -1,4 +1,4 @@
-# *Titanic* (1997) — Love, Class, and the Illusion of Permanence
+# Titanic (1997) — Love, Class, and the Illusion of Permanence
 
 James Cameron’s *Titanic* is often remembered as a sweeping romance, but its endurance comes from how deliberately it frames that romance against systems that are already failing. Beneath the spectacle and sentiment is a film about class, control, and the human tendency to believe that what we’ve built is unsinkable—socially as much as structurally.
 

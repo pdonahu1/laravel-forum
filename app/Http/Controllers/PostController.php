@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\Topic;
+use App\Http\Resources\TopicResource;
+
+
+
 
 // use Inertia\Inertia;
 // use Illuminate\Http\Auth\Middleware;
@@ -24,13 +30,19 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Topic $topic = null)
 {
-    return inertia('Posts/Index', [
-        'posts' => Post::with('user')
+    $posts = Post::with(['user', 'topic'])
+            ->when($topic, fn (Builder $query) => $query->whereBelongsTo($topic))
             ->latest()
+            ->latest('id')
             ->paginate(10)
-            ->through(fn($post) => PostResource::make($post)),
+            ->through(fn($post) => PostResource::make($post));
+
+    return inertia('Posts/Index', [
+        'posts' => $posts,
+        'topics' => fn () => TopicResource::collection(Topic::all()),
+        'selectedTopic' => fn () => $topic ? TopicResource::make($topic) : null,
     ]);
 }
 
@@ -39,7 +51,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return inertia('Posts/Create');
+        return inertia('Posts/Create', [
+            'topics' => fn () => TopicResource::collection(Topic::all()),
+        ]);
     }
 
     /**
@@ -49,6 +63,7 @@ class PostController extends Controller
 {
     $data = $request->validate([
         'title' => ['required', 'string', 'min:10', 'max:120'],
+        'topic_id' => ['required', 'exists:topics,id'],
         'body' => ['required', 'string', 'min:100', 'max:10000'],
     ]);
 
@@ -70,7 +85,7 @@ class PostController extends Controller
     }
 
     return inertia('Posts/Show', [
-        'post' => fn () => PostResource::make($post->load('user')),
+        'post' => fn () => PostResource::make($post->load('user', 'topic')),
         'comments' => fn () => $post->comments()
             ->with('user')
             ->latest()

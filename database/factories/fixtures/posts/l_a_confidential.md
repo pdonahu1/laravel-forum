@@ -1,4 +1,4 @@
-# *L.A. Confidential* (1997) — Power, Image, and the Violence Beneath Respectability
+# L.A. Confidential (1997) — Power, Image, and the Violence Beneath Respectability
 
 Curtis Hanson’s *L.A. Confidential* is a noir about appearances—who maintains them, who benefits from them, and who gets destroyed protecting them. Set against a meticulously reconstructed 1950s Los Angeles, the film strips away the city’s myth of sunshine and glamour to reveal a system held together by brutality, ambition, and carefully managed lies.
 

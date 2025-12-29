@@ -1,4 +1,4 @@
-# *Saving Private Ryan* (1998) — Chaos, Duty, and the Price of Survival
+# Saving Private Ryan (1998) — Chaos, Duty, and the Price of Survival
 
 Steven Spielberg’s *Saving Private Ryan* reshaped the modern war film by stripping combat of spectacle and replacing it with disorientation, terror, and moral exhaustion. It’s a film remembered first for how it looks and sounds—but it endures because of what it asks: what does a single life cost in the middle of a machine built to spend them?
 

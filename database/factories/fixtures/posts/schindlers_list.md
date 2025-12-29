@@ -1,4 +1,4 @@
-# *Schindler’s List* (1993) — The Weight of Choice in a World Without Mercy
+# Schindler’s List (1993) — The Weight of Choice in a World Without Mercy
 
 Steven Spielberg’s *Schindler’s List* is not an easy film to revisit, nor should it be. It stands as one of cinema’s most unflinching confrontations with moral responsibility under unimaginable cruelty, asking viewers not just to witness history, but to grapple with the uncomfortable truth that salvation often arrives through deeply flawed people.
 

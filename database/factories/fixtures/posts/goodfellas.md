@@ -1,4 +1,4 @@
-# *Goodfellas* (1990) — Seduction, Speed, and the Cost of the Life
+# Goodfellas (1990) — Seduction, Speed, and the Cost of the Life
 
 Martin Scorsese’s *Goodfellas* doesn’t ask whether the gangster life is right or wrong—it asks why it’s so intoxicating. From its opening moments, the film pulls viewers into a world where loyalty feels sacred, money feels endless, and consequences feel far away. That tension between allure and aftermath is what keeps this movie alive in comment sections more than three decades later.
 
