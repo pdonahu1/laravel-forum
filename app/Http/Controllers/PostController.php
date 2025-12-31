@@ -30,19 +30,26 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Topic $topic = null)
+    public function index(Request $request, Topic $topic = null)
 {
     $posts = Post::with(['user', 'topic'])
+            ->withCount('likes')
             ->when($topic, fn (Builder $query) => $query->whereBelongsTo($topic))
+            ->when(
+                $request->query('query'),
+                    fn (Builder $query) => $query->whereAny(['title', 'body'], 'like', '%' . $request->query('query') . '%')
+            )
             ->latest()
             ->latest('id')
             ->paginate(10)
+            ->withQueryString()
             ->through(fn($post) => PostResource::make($post));
 
     return inertia('Posts/Index', [
         'posts' => $posts,
         'topics' => fn () => TopicResource::collection(Topic::all()),
         'selectedTopic' => fn () => $topic ? TopicResource::make($topic) : null,
+        'query' => $request->query('query'),
     ]);
 }
 
@@ -80,18 +87,20 @@ class PostController extends Controller
      */
     public function show(Request $request, Post $post)
 {
-    if (!Str::contains($post->showRoute(), $request->path())) {
+    if (!Str::endsWith($post->showRoute(), $request->path())) {
         return redirect($post->showRoute($request->query()), status: 301);
     }
 
     return inertia('Posts/Show', [
-        'post' => fn () => PostResource::make($post->load('user', 'topic')),
-        'comments' => fn () => $post->comments()
-            ->with('user')
-            ->latest()
-            ->latest('id')
-            ->paginate(10)
-            ->through(fn($comment) => CommentResource::make($comment)),
+        'post' => fn () => PostResource::make($post->load('user', 'topic'))->withLikePermission(),
+        'comments' => function () use ($post) {
+            return $post->comments()
+                ->with('user')
+                ->latest()
+                ->latest('id')
+                ->paginate(10)
+                ->through(fn ($comment) => CommentResource::make($comment)->withLikePermission());
+        },
     ]);
 }
 

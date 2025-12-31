@@ -12,6 +12,7 @@ use App\Http\Resources\CommentResource;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Topic;
+use App\Http\Controllers\LikeController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -33,6 +34,9 @@ Route::middleware([
 
 Route::resource('posts', PostController::class)->only(['store', 'create']);
 Route::resource('posts.comments', CommentController::class)->shallow()->only(['store', 'destroy', 'update']);
+
+Route::post('/likes/{type}/{id}', [LikeController::class, 'store'])->name('likes.store');
+Route::delete('/likes/{type}/{id}', [LikeController::class, 'destroy'])->name('likes.destroy');
     
 });
 Route::get('posts/{post}/{slug}', [PostController::class, 'show'])->name('posts.show');

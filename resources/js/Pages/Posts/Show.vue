@@ -1,11 +1,32 @@
 <template>
+    <Head>
+        <link rel="canonical" :href="post.routes.show" />
+    </Head>
     <AppLayout :title="post.title">
         <Container>
             <Pill :href="route('posts.index', {topic: post.topic.slug})">{{ post.topic.name }}</Pill>
 
             <PageHeading class="mt-2">{{ post.title }}</PageHeading>
 
-            <span class="text-small text-gray-600 mt-1"> {{ formattedData }} ago by {{ post.user.name }}</span>
+            <span class="text-small text-gray-600 mt-1"> {{ formattedData }} by {{ post.user.name }}</span>
+
+            <div class="mt-4">
+                <span class="text-blue-500 font-bold">
+                    {{ post.likes_count }} Likes
+                </span>
+
+
+            <div v-if="$page.props.auth.user" class="mt-2">
+                <Link v-if="post.can.like" :href="route('likes.store', ['post', post.id])" method="post" class="inline-block bg-indigo-600 hover:bg-indigo-400 transition-colors text-sm text-white py-1 px-3 rounded-full">
+                    <HandThumbUpIcon class="size-6 px-1 inline-block"/>Like Post
+                </Link>
+
+                <Link v-else :href="route('likes.destroy', ['post', post.id])" method="delete" class="inline-block bg-indigo-600 hover:bg-indigo-400 transition-colors text-sm text-white py-1 px-3 rounded-full">
+                    <HandThumbDownIcon class="size-6 px-1 inline-block"/>Unlike Post
+                </Link>
+            </div>
+
+            </div>
 
             <article class="mt-6 prose prose-sm max-w-none" v-html="post.html">  
             </article>
@@ -16,7 +37,12 @@
                 <form v-if="$page.props.auth.user" @submit.prevent="() => commentIdBeingEdited ? updateComment() : addComment()" class="mt-4">
                     <div>
                         <InputLabel for="body" class="sr-only">Comment</InputLabel>
-                        <MarkdownEditor ref="commentTextAreaRef" id="body" v-model="commentForm.body" placeholder="Speak your mind Spock" editorClass="min-h-[160px]"/>
+                        <MarkdownEditor 
+                        ref="commentTextAreaRef" 
+                        id="body" 
+                        v-model="commentForm.body" 
+                        placeholder="Speak your mind Spock" 
+                        editorClass="!min-h-[160px]"/>
                         <InputError :message="commentForm.errors.body" class="mt-1"/>
                     </div>
 
@@ -41,12 +67,12 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Container from '@/Components/Container.vue';
 import Pagination from '@/Components/Pagination.vue';
 import { computed } from "vue";
-import {relativeDate} from '@/Utilities/date.js';
+import { relativeDate } from '@/Utilities/date.js';
 import Comment from "@/Components/Comment.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import {useForm, router} from "@inertiajs/vue3";
+import { useForm, router, Head, Link } from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
 import { formatDistance, parseISO } from "date-fns";
 import { useConfirm } from "/resources/js/Utilities/Composables/useCofirm.js";
@@ -54,8 +80,7 @@ import { ref } from "vue";
 import MarkdownEditor from "@/Components/MarkdownEditor.vue";
 import PageHeading from '@/Components/PageHeading.vue';
 import Pill from '@/Components/Pill.vue';
-
-
+import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/vue/24/solid';
 
 
 //import { comment } from "postcss";
@@ -122,7 +147,12 @@ const deleteComment = async (commentId) => {
     return;
     }
 
-    router.delete(route('comments.destroy', { comment: commentId, page: props.comments.current_page }), {
+    router.delete(route('comments.destroy', {
+        comment: commentId,
+        page: props.comments.data.length > 1
+            ? props.comments.current_page
+            : Math.max(props.comments.current_page - 1, 1)
+    }), {
         preserveScroll: true,
     });
 };

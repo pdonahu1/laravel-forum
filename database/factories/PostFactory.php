@@ -30,6 +30,7 @@ class PostFactory extends Factory
             'title' => str(fake()->sentence)->beforeLast('.')->title(),
             'body' => $body = Collection::times(4, fn () => fake()->realText(1250))->join(PHP_EOL . PHP_EOL),
             'html' => str($body)->markdown(),
+            'likes_count' => 0,
         ];
     }
     public function withFixture(): static

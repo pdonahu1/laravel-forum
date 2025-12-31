@@ -3,6 +3,12 @@
 namespace App\Providers;
 use App\Models\Comment;
 use App\Policies\CommentPolicy;
+use App\Models\Post;
+use App\Policies\PostPolicy;
+use App\Models\Like;
+use App\Policies\LikePolicy;
+use App\Models\User;
+use App\Policies\UserPolicy;
 
 
 // use Illuminate\Support\Facades\Gate;
@@ -18,6 +24,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Comment::class => CommentPolicy::class,
         Post::class => PostPolicy::class,
+        Like::class => LikePolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**

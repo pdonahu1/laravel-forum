@@ -5,9 +5,27 @@
         </div>
         <div class="flex-1">
             <div class="mt-1 prose prose-sm max-w-none" v-html="comment.html"></div>
-            <span class="first-letter:uppercase block pt-1 text-xs text-gray-600">By {{ comment.user.name }} {{ relativeDate(comment.created_at) }} ago</span>
+            <span class="first-letter:uppercase block pt-1 text-xs text-gray-600">
+                By {{ comment.user.name }} 
+                {{ relativeDate(comment.created_at) }} } | <span class="text-indigo-500">{{ comment.likes_count }} likes</span>
+            </span>
 
         <div class="mt-2 flex justify-end space-x-3 empty:hidden">
+
+            <div v-if="$page.props.auth.user">
+                <Link v-if="comment.can.like" preserve-scroll :href="route('likes.store', ['comment', comment.id])" method="post" class="inline-block text-gray-700 hover:text-indigo-400 transition-colors text-sm">
+                    <HandThumbUpIcon class="size-6 px-1 inline-block"/>
+                    <span class="sr-only">Like Comment</span>
+                </Link>
+
+                <Link v-else preserve-scroll :href="route('likes.destroy', ['comment', comment.id])" method="delete" class="inline-block text-gray-700 hover:text-indigo-400 transition-colors text-sm">
+                    <HandThumbDownIcon class="size-6 px-1 inline-block"/>
+                    <span class="sr-only">Unlike Comment</span>
+                </Link>
+            </div>
+
+
+
             <form v-if="comment.can?.update" @submit.prevent="$emit('edit', comment.id)">
                 <button class="font-mono text-xs hover:font-semibold">Edit</button>
             </form>
@@ -29,6 +47,8 @@ import { relativeDate } from "@/Utilities/date.js";
 //import { usePage } from '@inertiajs/vue3';
 //import { computed } from 'vue';
 import { defineEmits } from 'vue';
+import { Link } from "@inertiajs/vue3";
+import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/vue/24/solid';
 
 const props = defineProps(['comment']);
 

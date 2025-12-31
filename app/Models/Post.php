@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Topic;
+use App\Models\Like;
+use App\Models\Comment;
 
 // use App\Models\Comment;
 
@@ -20,6 +23,8 @@ class Post extends Model
     use HasFactory;
     use \App\Models\Concerns\ConvertMarkdownToHtml;
 
+
+    protected $withCount = ['likes'];
     protected $fillable = ['user_id', 'title', 'body', 'html'];
 
     public function user()
@@ -37,6 +42,12 @@ class Post extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+
+    public function likes(): MorphMany
+    {
+        return $this->morphMany(Like::class, 'likeable');
     }
 
 

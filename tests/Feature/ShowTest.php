@@ -57,9 +57,12 @@ it('can generate additional query parameters on the show route', function () {
 });
 
 
-it('will redirect if the slug is incorrect', function () {
+it('will redirect if the slug is incorrect', function (string $incorrectSlug) {
     $post = Post::factory()->create(['title' => 'Hello world']);
 
-    get(route('posts.show', [$post, 'wrong-slug', 'page' => 2]))
+    get(route('posts.show', [$post, $incorrectSlug, 'page' => 2]))
         ->assertRedirect($post->showRoute(['page' => 2]));
-});
+})->with([
+    'wrong-slug',
+    'hello',
+]);
